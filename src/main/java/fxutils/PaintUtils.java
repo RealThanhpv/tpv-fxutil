@@ -32,13 +32,15 @@ public class PaintUtils {
         return im;
     }
 
+//    static public LinearGradient awtRadialGradientPaintToFxRadialGradient(RadialGradientPaint paint){
+//
+//    }
+
     static public LinearGradient awtLinearGradientToFxLinearGradient(LinearGradientPaint paint){
         double startX = paint.getStartPoint().getX();
         double startY = paint.getStartPoint().getY();
         double endX = paint.getEndPoint().getX();
         double endY = paint.getEndPoint().getY();
-
-
 
         paint.getColors();
         paint.getFractions();
