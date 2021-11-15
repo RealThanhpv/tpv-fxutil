@@ -5,12 +5,13 @@
  * Learn how to create Gradle builds at https://guides.gradle.org/creating-new-gradle-builds
  */
 plugins {
+    id 'java'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.10'
+    id 'org.openjfx.javafxplugin' version '0.0.9'
 }
 
 javafx {
-    version = "17"
+    version = "18-ea+5"
     modules = [ 'javafx.controls', 'javafx.graphics', 'javafx.swing', ]
 }
 
