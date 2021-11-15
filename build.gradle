@@ -16,7 +16,7 @@ javafx {
 }
 
 projects {
-    group = 'utils'
+    group = 'fxutils'
     version = '1.0'
 }
 
@@ -27,5 +27,5 @@ repositories {
 
 application {
     // Define the main class for the application.
-    mainClassName = 'utils.FxViewApp'
+    mainClassName = 'fxutils.FxViewApp'
 }
