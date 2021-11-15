@@ -62,7 +62,7 @@ public class SwingViewApp {
             g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
             int w = 200;
             int h = 200;
-            g2d.setPaint(createLinearGradientPaint());
+            g2d.setPaint(createRadialGradientPaint());
             g2d.fillRect(0, 0, w, h);
         }
 

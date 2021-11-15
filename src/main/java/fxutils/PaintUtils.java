@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.*;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +33,25 @@ public class PaintUtils {
         return im;
     }
 
-//    static public LinearGradient awtRadialGradientPaintToFxRadialGradient(RadialGradientPaint paint){
-//
-//    }
+    static public RadialGradient awtRadialGradientPaintToFxRadialGradient(RadialGradientPaint paint){
+        double cx = paint.getCenterPoint().getX();
+        double cy = paint.getCenterPoint().getY();
+        double rad = paint.getRadius();
+        Point2D fp = paint.getFocusPoint();
+        double dx = fp.getX()-cx;
+        double dy = fp.getY() - cy;
+        double angle = Math.atan2(dx, dy);
+        double dsqr = dx*dx + dy*dy;
+        double distance = Math.sqrt(dsqr);
+
+        RadialGradient fxp = new RadialGradient(angle, distance,
+                cx, cy,  rad,
+                false, awtCycleMethodToFXCycleMethod(paint.getCycleMethod()),
+                awtColorsToFxStops(paint.getColors(), paint.getFractions())
+        );
+
+        return fxp;
+    }
 
     static public LinearGradient awtLinearGradientToFxLinearGradient(LinearGradientPaint paint){
         double startX = paint.getStartPoint().getX();
@@ -47,7 +64,8 @@ public class PaintUtils {
 
         LinearGradient fxpaint  = new LinearGradient(startX, startY, endX, endY,
                 false,
-                awtCycleMethodToFXCycleMethod(paint.getCycleMethod()), awtColorsToFxStops(paint.getColors(), paint.getFractions())
+                awtCycleMethodToFXCycleMethod(paint.getCycleMethod()),
+                awtColorsToFxStops(paint.getColors(), paint.getFractions())
         );
 
         return fxpaint;

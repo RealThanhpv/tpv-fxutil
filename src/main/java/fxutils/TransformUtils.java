@@ -10,7 +10,7 @@ public class TransformUtils {
         return new AffineTransform(fxTran.getMxx(), fxTran.getMyx(), fxTran.getMxy(), fxTran.getMyy(), fxTran.getTx(), fxTran.getTy());
     }
 
-     public static Affine awtToFxTransform(AffineTransform tran) {
+    public static Affine awtToFxTransform(AffineTransform tran) {
         return javafx.scene.transform.Transform.affine(tran.getScaleX(), tran.getScaleY(), tran.getShearY(), tran.getShearX(), tran.getTranslateX(), tran.getTranslateY());
     }
 

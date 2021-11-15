@@ -5,6 +5,7 @@ import javafx.embed.swing.SwingNode;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.RadialGradient;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -25,9 +26,10 @@ public class FxViewApp extends Application {
         root.getChildren().addAll(fxCon, swCon);
 
         Rectangle rect = new Rectangle(200, 200);
-        LinearGradientPaint swPaint = SwingViewApp.createLinearGradientPaint();
+        RadialGradientPaint swPaint = SwingViewApp.createRadialGradientPaint();
 
-        javafx.scene.paint.LinearGradient fxPaint = PaintUtils.awtLinearGradientToFxLinearGradient(swPaint);
+        javafx.scene.paint.Paint fxPaint = PaintUtils.awtRadialGradientPaintToFxRadialGradient(swPaint);
+
         rect.setFill(fxPaint);
         fxCon.getChildren().add(rect);
 
