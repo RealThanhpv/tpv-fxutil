@@ -14,7 +14,7 @@ public class ImageUtils {
     }
 
 
-    final public static byte[] fxImageToBytes(Image image) {
+     public static byte[] fxImageToBytes(Image image) {
         PixelReader reader = image.getPixelReader();
 
         double width = image.getWidth();
@@ -39,7 +39,7 @@ public class ImageUtils {
 
         return imgArr;
     }
-    final public static Image fxImageFromBytes(byte[] bytes) {
+     public static Image fxImageFromBytes(byte[] bytes) {
         ByteBuffer bf = ByteBuffer.wrap(bytes);
         int width = bf.getInt();
         int height = bf.getInt();
@@ -65,7 +65,7 @@ public class ImageUtils {
      * @param image
      * @return bytes without width and height data
      */
-    final public static byte[] awtImageToFxImageBytes(BufferedImage image) {
+     public static byte[] awtImageToFxImageBytes(BufferedImage image) {
 
         int w = image.getWidth();
         int h = image.getHeight();
