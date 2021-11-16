@@ -21,17 +21,12 @@ public class PaintUtils {
 
     public static ImagePattern awtTexturePaintToFXImagePattern(TexturePaint paint){
 
-        Image image = ImageUtils.awtImageToFxImage(paint.getImage());
-        double x = paint.getAnchorRect().getX();
-        double y = paint.getAnchorRect().getY();
-        double w  = paint.getAnchorRect().getWidth();
-        double h = paint.getAnchorRect().getHeight();
+        return new ImagePattern(ImageUtils.awtImageToFxImage(paint.getImage()),
+                paint.getAnchorRect().getX(), paint.getAnchorRect().getY(),
+                paint.getAnchorRect().getWidth(), paint.getAnchorRect().getHeight(),
+                false);
 
 
-        ImagePattern im = new ImagePattern(image, x, y, w, h, false);
-
-
-        return im;
     }
 
     static public RadialGradient awtRadialGradientPaintToFxRadialGradient(RadialGradientPaint paint){
@@ -63,13 +58,12 @@ public class PaintUtils {
         paint.getColors();
         paint.getFractions();
 
-        LinearGradient fxpaint  = new LinearGradient(startX, startY, endX, endY,
+        return   new LinearGradient(startX, startY, endX, endY,
                 false,
                 awtCycleMethodToFXCycleMethod(paint.getCycleMethod()),
                 awtColorsToFxStops(paint.getColors(), paint.getFractions())
         );
 
-        return fxpaint;
     }
 
     static private List<Stop> awtColorsToFxStops(java.awt.Color[] colors, float[] fractions){
@@ -97,10 +91,6 @@ public class PaintUtils {
     //User 32 bytes
     final public static void writeColorToByteBuffer(Color color, ByteBuffer bf) {
         writeColorRgbBuffer(color.getRed(), color.getGreen(), color.getBlue(), color.getOpacity(), bf);
-//        bf.putDouble(color.getRed());
-//        bf.putDouble(color.getGreen());
-//        bf.putDouble(color.getBlue());
-//        bf.putDouble(color.getOpacity());
     }
 
     final public static void writeColorRgbBuffer(double red, double green, double blue, double opacity, ByteBuffer bf) {
@@ -125,14 +115,13 @@ public class PaintUtils {
     //need 32 bytes array
     final public static Color colorFromBytes(byte[] bytes) {
         ByteBuffer bf = ByteBuffer.wrap(bytes);
-        Color color = Color.color(
+        return Color.color(
                 bf.getDouble(),
                 bf.getDouble(),
                 bf.getDouble(),
                 bf.getDouble()
         );
 
-        return color;
 
     }
     final public static Color colorFromByteBuffer(ByteBuffer bf) {
