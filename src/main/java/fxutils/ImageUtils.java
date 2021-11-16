@@ -7,14 +7,14 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
 
 import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
 import java.nio.ByteBuffer;
 
 public class ImageUtils {
     private ImageUtils() {
     }
 
-
-     public static byte[] fxImageToBytes(Image image) {
+    public static byte[] fxImageToBytes(Image image) {
         PixelReader reader = image.getPixelReader();
 
         double width = image.getWidth();
@@ -76,27 +76,44 @@ public class ImageUtils {
         bf.putInt(w);
         bf.putInt(h);
 
+        ColorModel cm = image.getColorModel();
+        int pixel;
         for (int i = 0; i < w; i++) {
             for (int j = 0; j < h; j++) {
-                PaintUtils.writeColorToByteBuffer( PaintUtils.awtColorToFXColor(new java.awt.Color(image.getRGB(i, j))), bf);
+                pixel = image.getRGB(i, j);
+
+                PaintUtils.writeColorToByteBuffer(
+                        Color.rgb(cm.getRed(pixel), cm.getGreen(pixel),
+                                cm.getBlue(pixel), cm.getAlpha(pixel) / 255.0)
+                        , bf);
             }
         }
 
         return imgArr;
     }
 
-    public static Image awtImageToFxImage(BufferedImage image) {
 
-       return fxImageFromBytes(awtImageToFxImageBytes(image));
-//        WritableImage image = new WritableImage(width, height);
-//        PixelWriter writer = image.getPixelWriter();
-//
-//        for (int x = 0; x < width; x++) {
-//            for (int y = 0; y < height; y++) {
-//                writer.setColor(x, y, PaintUtils.colorFromByteBuffer(bf));
-//            }
-//        }
 
+    public static Image awtImageToFxImage(BufferedImage bfImage) {
+        double width = bfImage.getWidth();
+        double height = bfImage.getHeight();
+
+        WritableImage image = new WritableImage((int) width, (int) height);
+        PixelWriter writer = image.getPixelWriter();
+
+        ColorModel cm = bfImage.getColorModel();
+        int pixel;
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                pixel = bfImage.getRGB(i, j);
+                writer.setColor(i, j,
+                        Color.rgb(cm.getRed(pixel), cm.getGreen(pixel),
+                        cm.getBlue(pixel), cm.getAlpha(pixel) / 255.0)
+                );
+            }
+        }
+
+        return image;
     }
     /**
      * Returns a JavaFX color that is equivalent to the specified AWT color.

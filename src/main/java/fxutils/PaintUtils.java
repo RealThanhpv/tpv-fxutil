@@ -20,15 +20,16 @@ public class PaintUtils {
     }
 
     public static ImagePattern awtTexturePaintToFXImagePattern(TexturePaint paint){
-        Image image = ImageUtils.awtImageToFxImage(paint.getImage());
 
+        Image image = ImageUtils.awtImageToFxImage(paint.getImage());
         double x = paint.getAnchorRect().getX();
         double y = paint.getAnchorRect().getY();
         double w  = paint.getAnchorRect().getWidth();
         double h = paint.getAnchorRect().getHeight();
-        double transparency = paint.getTransparency()/255;
 
-        ImagePattern im = new ImagePattern(image, x, y, w, h, true);
+
+        ImagePattern im = new ImagePattern(image, x, y, w, h, false);
+
 
         return im;
     }
@@ -95,11 +96,19 @@ public class PaintUtils {
 
     //User 32 bytes
     final public static void writeColorToByteBuffer(Color color, ByteBuffer bf) {
+        writeColorRgbBuffer(color.getRed(), color.getGreen(), color.getBlue(), color.getOpacity(), bf);
+//        bf.putDouble(color.getRed());
+//        bf.putDouble(color.getGreen());
+//        bf.putDouble(color.getBlue());
+//        bf.putDouble(color.getOpacity());
+    }
 
-        bf.putDouble(color.getRed());
-        bf.putDouble(color.getGreen());
-        bf.putDouble(color.getBlue());
-        bf.putDouble(color.getOpacity());
+    final public static void writeColorRgbBuffer(double red, double green, double blue, double opacity, ByteBuffer bf) {
+
+        bf.putDouble(red);
+        bf.putDouble(green);
+        bf.putDouble(blue);
+        bf.putDouble(opacity);
     }
     //return 32 bytes array
     final public static byte[] colorToBytes(Color color) {
