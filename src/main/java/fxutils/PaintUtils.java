@@ -65,7 +65,6 @@ public class PaintUtils {
         );
 
     }
-
     static public LinearGradient awtGradientToFxLinearGradient(GradientPaint paint){
         double startX = paint.getPoint1().getX();
         double startY = paint.getPoint1().getY();
@@ -80,6 +79,8 @@ public class PaintUtils {
 
         return fxpaint;
     }
+
+
 
     static private List<Stop> awtColorsToFxStops(java.awt.Color[] colors, float[] fractions){
         List<Stop> stops = new ArrayList<>();
