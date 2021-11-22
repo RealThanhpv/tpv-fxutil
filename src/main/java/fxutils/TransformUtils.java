@@ -11,7 +11,7 @@ public class TransformUtils {
     }
 
     public static Affine awtToFxTransform(AffineTransform tran) {
-        return javafx.scene.transform.Transform.affine(tran.getScaleX(), tran.getScaleY(), tran.getShearY(), tran.getShearX(), tran.getTranslateX(), tran.getTranslateY());
+        return javafx.scene.transform.Transform.affine(tran.getScaleX(), tran.getShearY(), tran.getShearX(),  tran.getScaleY(), tran.getTranslateX(), tran.getTranslateY());
     }
 
     public static double[] awtToFxTransformArray(AffineTransform tran) {
