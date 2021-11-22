@@ -41,6 +41,8 @@ public class PaintUtils {
         }
 
 
+        return null;
+
     }
 
     public static Color awtColorToFXColor(java.awt.Color c) {
