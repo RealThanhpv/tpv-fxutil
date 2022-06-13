@@ -1,4 +1,4 @@
-package fxutils;
+package tpv.fxutil.transform;
 
 import javafx.scene.transform.Affine;
 import java.awt.geom.AffineTransform;

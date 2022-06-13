@@ -1,4 +1,4 @@
-package fxutils;
+package tpv.fxutil.metric;
 
 public class MetricUtils {
 

@@ -1,10 +1,11 @@
-package fxutils;
+package tpv.fxutil.image;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
+import tpv.fxutil.paint.PaintUtils;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;

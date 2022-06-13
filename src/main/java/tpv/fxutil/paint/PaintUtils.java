@@ -1,8 +1,10 @@
-package fxutils;
+package tpv.fxutil.paint;
 
 import javafx.scene.paint.Color;
 import javafx.scene.paint.*;
 import javafx.scene.paint.Paint;
+import tpv.fxutil.image.ImageUtils;
+
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.nio.ByteBuffer;

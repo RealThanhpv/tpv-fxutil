@@ -1,4 +1,4 @@
-package fxutils;
+package tpv.fxutil.paint;
 
 import javax.swing.*;
 import java.awt.*;

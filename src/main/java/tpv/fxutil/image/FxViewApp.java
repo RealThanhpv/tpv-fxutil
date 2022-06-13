@@ -1,4 +1,4 @@
-package fxutils;
+package tpv.fxutil.image;
 
 import javafx.application.Application;
 import javafx.embed.swing.SwingNode;
@@ -7,6 +7,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import tpv.fxutil.paint.PaintUtils;
+import tpv.fxutil.paint.SwingViewApp;
 
 import javax.swing.*;
 import java.awt.*;
