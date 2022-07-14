@@ -1,4 +1,4 @@
-package fxutils;
+package tpv.fxawt.util.transform;
 
 import javafx.scene.transform.Affine;
 import java.awt.geom.AffineTransform;
@@ -12,6 +12,9 @@ public class TransformUtils {
 
     public static Affine awtToFxAffine(AffineTransform tran) {
         return javafx.scene.transform.Transform.affine(tran.getScaleX(), tran.getScaleY(), tran.getShearY(), tran.getShearX(), tran.getTranslateX(), tran.getTranslateY());
+    }
+    public static Affine awtToFxTransform(AffineTransform tran) {
+        return javafx.scene.transform.Transform.affine(tran.getScaleX(), tran.getShearY(), tran.getShearX(),  tran.getScaleY(), tran.getTranslateX(), tran.getTranslateY());
     }
 
     public static double[] awtToFxTransformArray(AffineTransform tran) {

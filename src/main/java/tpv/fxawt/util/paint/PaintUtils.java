@@ -1,8 +1,9 @@
-package fxutils;
+package tpv.fxawt.util.paint;
 
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.*;
+import javafx.scene.paint.Paint;
+import tpv.fxawt.util.image.ImageUtils;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -13,6 +14,44 @@ import java.util.List;
 public class PaintUtils {
 
     private PaintUtils(){}
+
+    static public Paint awtPaintToFxPaint(java.awt.Paint p){
+        if(p instanceof java.awt.Color ){
+            return awtColorToFXColor((java.awt.Color)p);
+        }
+
+        if(p instanceof java.awt.GradientPaint  ){
+            return awtGradientToFxLinearGradient((java.awt.GradientPaint)p);
+        }
+
+        if(p instanceof java.awt.LinearGradientPaint  ){
+            return awtLinearGradientToFxLinearGradient((java.awt.LinearGradientPaint)p);
+        }
+
+        if(p instanceof java.awt.RadialGradientPaint  ){
+            return awtRadialGradientPaintToFxRadialGradient((java.awt.RadialGradientPaint)p);
+        }
+
+        if(p instanceof java.awt.TexturePaint  ){
+            return awtTexturePaintToFXImagePattern((java.awt.TexturePaint)p);
+        }
+
+        try {
+            throw new Exception("Unsupport type of "+ p);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        return null;
+
+    }
+
+
+    public static java.awt.Color fxToAwtColor(Color c) {
+        return new java.awt.Color((float) c.getRed(), (float) c.getGreen(), (float) c.getBlue(), (float) c.getOpacity());
+    }
+
 
     public static Color awtColorToFXColor(java.awt.Color c) {
         return Color.rgb(c.getRed(), c.getGreen(),

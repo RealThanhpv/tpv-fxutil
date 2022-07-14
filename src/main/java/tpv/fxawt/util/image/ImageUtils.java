@@ -1,10 +1,11 @@
-package fxutils;
+package tpv.fxawt.util.image;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 import javafx.scene.paint.Color;
+import tpv.fxawt.util.paint.PaintUtils;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
@@ -115,12 +116,7 @@ public class ImageUtils {
 
         return image;
     }
-    /**
-     * Returns a JavaFX color that is equivalent to the specified AWT color.
-     *
-     * @param c the color ({@code null} not permitted).
-     * @return A JavaFX color.
-     */
+
 
 
 

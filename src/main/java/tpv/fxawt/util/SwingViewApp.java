@@ -1,4 +1,4 @@
-package fxutils;
+package tpv.fxawt.util;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +16,7 @@ public class SwingViewApp {
                 JFrame frame = new JFrame();
                 TestPanel panel = new TestPanel();
                 frame.add(panel);
-                frame.setSize(200, 200);
+                frame.setSize(400, 400);
                 frame.setLocationRelativeTo(null);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
@@ -24,7 +24,7 @@ public class SwingViewApp {
         });
     }
 
-    static public TexturePaint makeTexturePaint(int size, boolean alpha){
+    static public TexturePaint makeAwtTexturePaint(int size, boolean alpha){
         int s2 =  (size / 2);
         int type =
                 alpha ? BufferedImage.TYPE_INT_ARGB : BufferedImage.TYPE_INT_RGB;
@@ -126,9 +126,9 @@ public class SwingViewApp {
             super.paintComponent(g);
             Graphics2D g2d = (Graphics2D) g;
             g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-            int w = 200;
-            int h = 200;
-            g2d.setPaint(makeTexturePaint(10, true));
+            int w = 400;
+            int h = 400;
+            g2d.setPaint(makeAwtTexturePaint(20, true));
             g2d.fillRect(0, 0, w, h);
         }
 
